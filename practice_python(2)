@@ -1,0 +1,341 @@
+# class SuperClass:
+#     def __init__(self):
+#         print('부모 클래스 호출')
+#
+# class SubClass(SuperClass):
+#     def __init__(self):                             # 초기화
+#         SuperClass.__init__(self)                   # 여기서 부모클래스 호출함
+#         print('자식 클래스 호출')
+#
+# call = SubClass()
+# call
+
+# class SuperClass:
+#     def __init__(self):
+#         print('부모 클래스 호출')
+#
+# class SubClass(SuperClass):
+#     pass                                                # 패스만 써도 부모클래스 호출 가능함
+# call = SubClass()
+# call
+
+# class Person:
+#     def __init__(self, name, phone=None):
+#         self.name = name
+#         self.phone = phone
+#     def __str__(self):
+#         return '<Person {0} {1}>'.format(self.name, self.phone)           # 이거 없으면 주소값 나옴
+#
+# class Employee(Person):
+#     def __init__(self, name, phone, position, salary):
+#         Person.__init__(self, name, phone)                                # 부모 클래스에 있는 인자를 사용하겠다.
+#         self.position = position
+#         self.salary = salary
+# m = Employee('전우치', '02-996-1235', '대리', 20000000)
+# print(m)
+# print(m.name, m.position)                                                 # employee클래스에서 name과 position만 빼오겠다. name인자는 부모클래스에 있어서 사용 가능함.
+
+# class Person:
+#     def __init__(self, name, phone=None):
+#         self.name = name
+#         self.phone = phone
+#     def __str__(self):
+#         return '<Person {0}{1}>'.format(self.name, self.phone)
+# class Employee(Person):
+#     def __init__(self, name, phone, position, salary):
+#         super().__init__(name, phone)
+#         self.position = position
+#         self.salary = salary
+#     def __str__(self):
+#         return '<Employee {0}{1}{2}{3}>'.format(self.name, self.phone, self.position, self.salary)
+# supcall = Person('홍길동', '02-996-1234')
+# print(supcall)
+# print(supcall.name, supcall.phone)
+# m = Employee('전우치', '02-996-1235', '대리', 20000000)
+# print(m)
+# print(m.name, m.position)
+
+# class MethodClass:
+#     @staticmethod                                               # 데코레이터 적용하여 self인자를 받지 않음.
+#     def call(x,y):
+#         print(x,y)
+# f = MethodClass()
+# f.call(5,6)
+
+# class MethodClass:
+#     @classmethod                                                # classmethod를 적어서 클래스도 같이 나옴.
+#     def call(classobject, x, y):
+#         print(classobject, x, y)
+# MethodClass.call(3,4)                                           # 데코레이터 하고 불러오는 방식은 두가지
+# f = MethodClass()
+# f.call(5,6)
+
+# from abc import ABCMeta, abstractmethod
+# class MethodClass(metaclass=ABCMeta):
+#     @abstractmethod                                                 # 추상 메소드
+#     def call(self):
+#         pass
+# class SubMethodClass(MethodClass):
+#     def call(self):
+#         print('추상 메소드 호출')                                  # 부모가 추상클래스 이므로 여기다가 pass를 치면 안댐.
+# f1 = SubMethodClass()
+# f1.call()
+
+# class Aniaml:
+#     def cry(self):
+#         print('.....')
+# class Dog(Aniaml):
+#     def cry(self):
+#         print('멍멍')
+# class Duck(Aniaml):
+#     def cry(self):
+#         print('꽥꽥')
+# class Fish(Aniaml):
+#     pass
+# for each in (Dog(), Duck(), Fish()):
+#     each.cry();
+
+# from abc import ABCMeta, abstractmethod
+# class Animal(metaclass=ABCMeta):
+#     @abstractmethod                                                 # 추상은 위의 코드처럼 Fish부분에 pass가 안됨.
+#     def cry(self):
+#         pass
+# class Dog(Animal):
+#     def cry(self):
+#         print('멍멍')
+# class Duck(Animal):
+#     def cry(self):
+#         print('꽥꽥')
+# for each in (Dog(), Duck()):
+#     each.cry()
+
+try:
+    print(10/0)
+except ZeroDivisionError as e:                              # 0으로 나눴을 때의 예외처리
+    print('예외처리', e)
+
+try:
+    print(10/0)
+except ZeroDivisionError as e:
+    pass                                                    # 안알랴줌
+
+try:
+    print(10/1)
+except ZeroDivisionError as e:
+    print('예외 발생 : ', e)
+else:                                                       # 아닐경우 else로 적어줌
+    print('예외가 발생하지 않았습니다.')
+
+try:
+    print(10/0)
+except ZeroDivisionError as e:
+    print('예외 발생:', e)
+finally:                                                    # 자바의 finally와 같이 예외처리 관계 없이 발생.
+    print('예외에 관계없이 수행한다.')
+
+class IndexCall:
+    def __init__(self, obj):
+        self.obj = obj
+    def __getitem__(self, k):
+        if k<0 or self.obj<=k:
+            raise IndexError(k)                             # 직접 에러처리.
+        return k*k
+call = IndexCall(10)
+for i in call:
+    print(i, end=' ')
+
+def strtest():
+    import string                                               # string 클래스 임폴트
+    b = string.ascii_uppercase
+    return b
+print(strtest())
+
+# mod = '테스트'
+# import  mod
+# print(mod)
+# import mod
+# mod = '테스트'
+# print(mod.add)                                                # mod는 임폴트 해놔도 다시 변수가 정해져서 안됨.
+
+import string
+string.a = '이전내용입니다.'
+import string
+print(string.a)                                                 # 이런식으로 평소 불러오던 것처럼 불러올 수 있음
+
+from mod import add                                             # mod내 add를 import시키겠다.
+print(add(3,4))
+
+from mod import *                                               # mod내 모든 함수를 import시키겠다.
+print(add(3,4))
+
+import mod as alias                                             # import시킨거 별칭 만들어 주기
+print(alias.add(3,4))
+
+from mod import add as alias_min                                # mod내 add함수에 별칭을 붙여 사용
+def add(a, b):
+    return a*b
+print(alias_min(3,4))
+
+print(__name__)                                                 # __name__속성으로 현재의 모듈이 최상위 모듈로서 수행되는지를 출력한다.
+
+import test
+print(test.__name__)
+
+def f():
+    print('테스트 코드 실행')
+if __name__=='__main__':                                        # 최상위 클래스가 __main__이 맞음.
+    f()
+
+# import math
+# from random import random, randint, choice, shuffle, sample
+#
+# print(math.pi)                                          # 파이값 호출
+#
+# print(math.sqrt(4))                                     # 루트 값
+# print(math.sqrt(4**2))
+#
+# print(math.log(4))                                      # log값
+# print(math.log(81, 3))
+#
+# print(math.e)                                           # e 값
+#
+# print(math.sin(4))                                      # sin 값
+# print(math.cos(4))                                      # cos 값
+# print(math.tan(4))                                      # tan 값
+#
+# print(random())                                         # 0과 1 사이의 랜덤값
+#
+# print(randint(1, 10))                                   # 1과 10 사이의 랜덤정수값
+#
+# a = [1,2,3,4,5]
+# print('리스트 난수값 : ', choice(a))                      # 리스트 안에서의 랜덤으로 뽑아서 가져오기
+#
+# a = [1,2,3,4,5]
+# shuffle(a)                                              # 리스트 순서 섞기
+# print(a)
+#
+# a = '0123456789'
+# for i in range(10):
+#     data = ''.join(sample(a, len(a)))                   # sample은 선택된 요소의 길이 목록을 반환한다.
+#     print(data)
+#
+# from time import  time, localtime, asctime, ctime, strftime, sleep
+# print(time())                                           # 일반 time메소드는 그냥 실수로 알려줌.
+#
+# print(localtime(time()))                                # 이러면 또 이상하게 나옴.
+#
+# print(asctime(localtime(time())))                       # 이렇게 해야지 정형화된 시간이 나옴.
+#
+# print(ctime())                                          # 위의 방법은 너무 기니 이 방법을 적는 것.
+#
+# print(strftime('%x', localtime(time())))                # 날짜만 알려주는 방식
+#
+# # for i in range(5):
+# #     print(i)
+# #     sleep(1)                                            # 1초 쉬기
+# #
+#
+# from calendar import calendar, prcal, prmonth, weekday
+#
+# print(calendar(2018))                                   # 2018년의 달력 출력(간단함!)
+#
+# prcal(2018)                                             # print메소드 안써도 prcal메소드면 사용 가능함.
+#
+# prmonth(2018,12)                                        # 12월 한달만 출력.
+#
+# print(weekday(2018,12,31))                              # 해당 요일이 언제일지 출력. 월요일이니 0
+#
+# import sys
+#
+# # sys.exit()                                              # 종료
+#
+# print(sys.version)                                          # 파이썬 버전 확인.
+#
+# print(sys.version_info)                                     # 파이썬 버전 정보 확인.
+#
+# print(sys.path)                                             # 파이썬 모듈 저장되어있는 위치 확인.
+#
+# # with open('test.txt', 'w', encoding='UTF-8') as f:
+# #     sys.stdin = f                                           # stdin 속성은 파일 객체를 변환하여 파일에 저장된 모든 내용을 지운다.
+#
+# # with open('test.txt', 'w', encoding='UTF-8') as f:
+# #     sys.stdout = f                                           # stdout 속성은 파일 객체를 변환하여 모든 출력을 해당 파일로 저장한다.
+# #     print('표준 출력으로 입력')
+# #
+# with open('test.txt', 'w', encoding='UTF-8') as f:
+#     sys.stderr = f                                              # stdin과 비슷하게 삭제를 하는데 정상 종료가 아님.
+#     print('오류 메시지 출력')
+#
+# print('입력 인코딩 : ', sys.stdin.encoding, ',', '출력 인코딩 : ', sys.stdout.encoding)       # 입력과 출력에 대한 인코딩을 반환한다.
+import sys
+
+# filename = sys.argv[1]                              # argv속성은 스크립트에 전달 된 명령행 인자 목록으로 파일을 가져온다.
+# with open(filename, encoding='UTF-8') as f:
+#     s = f.read()
+#     print(s)
+
+
+from pickle import dump, dumps, load, loads
+#
+# a = {'홍길동':4358382, '전우치':9465215}
+# b = ['string', 1234, 0.2345]
+# c = (a,b)
+# with open('test.txt', 'wb') as f:                           # dump메소드로 파일에 내용을 저장시킴.
+#     dump(c,f)
+#
+
+# a = [1,2,3]
+# print(dumps(a))                                                 # 객체를 바이트 객체로 반환
+#
+# with open('test.txt', 'rb') as f:                               # load메소드로 파일에 있는 내용을 불러옴
+#     s = load(f)
+#     print(s)
+#
+# a = [1,2,3]
+# print(loads(dumps(a)))                                          # 바아트 객체를 실제 객채로 변환
+#
+# class Serializable:
+#     pass
+# a = Serializable()
+# a.count = 10
+#
+# with open('test.txt', 'wb') as f:                               # txt파일에 저장
+#     dump(a,f)
+#
+# with open('test.txt', 'rb') as f:                               # txt파일 내용 불러옴
+#     s = load(f)
+#     print(s.count)
+
+# import threading, time
+#
+# def myThread(id):
+#     for i in range(5):
+#         print('아이디는 {}이고 카운트는 {}이다.'.format(id, i))
+#         time.sleep(1)
+#
+# thread_list = []
+# for i in range(2):
+#     th = threading.Thread(target=myThread, args=(i,))
+#     th.start()
+#     thread_list.append(th)
+# for th in thread_list:
+#     th.join(2)
+# print('스레드 대기')
+
+
+import re
+p = re.compile('Python|Java')
+m = p.match('Python Hello')                             # p에서 python이나 java가 있는지 확인.
+print(m)
+
+print(re.search('^Life', 'Life is too short'))              # Life로 시작해야지 반환함.
+print(re.search('^Life', 'My Life'))
+
+print(re.search('short$', 'Life is too short'))             # short로 끝나야지 반환함.
+
+p = re.compile(r'\bclass\b')
+print(p.search('no class at all'))
+
+
+
+
