@@ -1,0 +1,169 @@
+import sqlite3
+
+# conn = sqlite3.connect('fruit.db')
+# cur = conn.cursor()
+# sql = """
+#
+# drop table if exists fruit_prices;
+#
+# create table fruit_prices(
+# fruit_id integer primary key,
+# name text unique,
+# price integer
+# );
+#
+# insert into fruit_prices (name, price) values('사과', 800);
+# insert into fruit_prices (name, price) values('오렌지', 1000);
+# insert into fruit_prices (name, price) values('키위', 1500);
+#
+#
+# """
+#
+# cur.executescript(sql)
+# conn.close()
+
+
+
+#############################
+
+#
+# conn = sqlite3.connect('fruit.db')
+# cur = conn.cursor()
+# sql = "select * from fruit_prices"
+# select = cur.execute(sql)
+# print(select.fetchall())
+
+# conn = sqlite3.connect('fruit.db', isolation_level=None)        # isolation_level 설정해주면 자동 커밋.
+# with conn:
+#     cur = conn.cursor()
+#     sql = "select * from fruit_prices"
+#     select = cur.execute(sql)
+#     print(select.fetchall())                                # 전체 다 출력
+#     # conn.commit()                                           # 커밋
+#     cur.execute(sql)
+#     print(cur.fetchone())                                   # 한 행만 튜플로 반환
+#     fruits = cur.fetchall()                                 # 전체 다 출력
+#     for fruit in fruits:
+#         print(fruit)
+#     cur = conn.cursor()
+#     cur.execute(sql)
+#     print(cur.fetchmany(2))                                 # 특정 개수만 반환
+
+
+conn = sqlite3.connect('fruit.db', isolation_level=None)
+with conn:
+    cur = conn.cursor()
+    sql = "select * from fruit_prices"
+    cur.execute(sql)
+    # names = [des[0] for des in cur.description]                 # description은 속성값을 반환해줌. cur객체 안에 속성값을 타겟인 des 객체에 대입하여 des객체의 인덱스 0을 반환 반복 실행
+    names = list(map(lambda x:x[0], cur.description))
+    print(names)
+
+
+with conn:
+    cur = conn.cursor()
+    # sql = "insert into fruit_prices(name, price) values('포도',600)"          # insert
+    # sql = "update fruit_prices set name = '청포도', price = 900 where fruit_id = 4"    #update
+    # sql = "delete from fruit_prices where fruit_id = 4"     #delete
+    cur.execute(sql)
+    sql = "select * from fruit_prices"
+    cur.execute(sql)
+    fruit_list = cur.fetchall()
+    print(fruit_list)
+
+with conn:
+    cur = conn.cursor()
+    data = (1,)
+    sql = "select * from fruit_prices where fruit_id = ?"                   # 퀘스쳔으로 하는 것임.
+    cur.execute(sql, data)
+    data = 800, 1000
+    sql = "select * from fruit_prices where price >= ? and price <= ?"      # 퀘스쳔 중복으로 하는 것임.
+    cur.execute(sql, data)
+    fruit_list = cur.fetchall()
+    print(fruit_list)
+
+import sqlite3
+import csv
+
+conn = sqlite3.connect('aaa.db', isolation_level=None)
+cur = conn.cursor()
+sql = """
+drop table if exists aaa;
+
+create table aaa (
+sido varchar2(100),
+measure_date varchar2(100),
+slfr_dxd float(22),
+crbn_mnxd float(22),
+ozon float(22),
+ntrgn_dxd float(22),
+particle_matter_10 number,
+particle_matter_2 number,
+netwokr varchar2(200)
+)
+"""
+cur.executescript(sql)
+conn.close()
+
+########################################################################
+
+conn = sqlite3.connect('aaa.db', isolation_level=None)
+with conn:
+    cur = conn.cursor()
+    csv_file = open("123.csv", encoding='utf-8')
+    csv_reader = csv.reader(csv_file)
+    aaa_list = list(csv_reader)
+    aaa_list = aaa_list[1:]
+    for item in aaa_list :
+        item[0] = item[0].strip()
+        item[1] = item[1].strip()
+        item[2] = item[2].strip()
+        item[3] = item[3].strip()
+        item[4] = item[4].strip()
+        item[5] = item[5].strip()
+        item[6] = item[6].strip()
+        item[7] = item[7].strip()
+        item[8] = item[8].strip()
+    sql = "insert into aaa values (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+    cur.executemany(sql, aaa_list)
+    cur.execute('select * from aaa')
+    fruits = cur.fetchall()  # 전체 다 출력
+    for fruit in fruits:
+        print(fruit)
+
+import cx_Oracle as xe
+
+dsn = xe.makedsn("192.168.0.38", 1521, "xe")
+conn = xe.connect("scott", "tiger", dsn)
+with conn:
+    cur = conn.cursor()
+    # sql = "select * from dept"
+    # cur.execute(sql)
+    # print(cur.fetchone())                                           # 하나 검색
+    # print(cur.fetchall())                                           # 전체 검색
+    # print(cur.fetchmany(2))                                         # 2개 검색
+    # names = [des[0] for des in cur.description]                     # 컬럼 검색
+    # print(names)
+
+    # sql = "insert into dept(deptno, dname, loc) values (45, '연구', '부산')"
+    # cur.execute(sql)
+    # sql = "select * from dept"
+    # cur.execute(sql)
+    # print(cur.fetchall())
+    # conn.commit()
+
+    sql = "update dept set dname='기획', loc = '서울' where deptno = 50"
+    cur.execute(sql)
+    sql = "select * from dept"
+    cur.execute(sql)
+    print(cur.fetchall())
+    conn.commit()
+
+
+    # sql = "delete from dept where deptno = 50"
+    # cur.execute(sql)
+    # sql = "select * from dept"
+    # cur.execute(sql)
+    # print(cur.fetchall())
+    # conn.commit()
+
