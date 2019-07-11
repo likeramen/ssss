@@ -1,0 +1,536 @@
+import urllib.request
+import json
+id = "xbm8iqn0cl"
+pwd = "THPrwjjLOy2lab1Qmx9C9qGpqBWFiHn20LOhoj9x"
+url = "https://naveropenapi.apigw.ntruss.com/map-static/v2/rasterw=300&h=300&center=127.1054221,37.3591614&level=16&X-NCP-APIGW-API-KEY-ID=xbm8iqn0cl & X-NCP-APIGW-API-KEY=THPrwjjLOy2lab1Qmx9C9qGpqBWFiHn20LOhoj9x"
+print(url)
+
+
+# import os
+# import sys
+# import urllib.request
+# client_id = "xbm8iqn0cl"
+# client_secret = "THPrwjjLOy2lab1Qmx9C9qGpqBWFiHn20LOhoj9x"
+# encText = urllib.parse.quote("불정로 6")
+# url = "https://naveropenapi.apigw.ntruss.com/map-static/v2/raster?query=" + encText # json 결과
+# request = urllib.request.Request(url)
+# request.add_header("X-Naver-Client-Id",client_id)
+# request.add_header("X-Naver-Client-Secret",client_secret)
+#
+# print(url)
+
+
+# url = "https://openapi.naver.com/v1/map/geocode.xml?query=" + encText # xml 결과
+# request = urllib.request.Request(url)
+# request.add_header("X-Naver-Client-Id",client_id)
+# request.add_header("X-Naver-Client-Secret",client_secret)
+# response = urllib.request.urlopen(request)
+# rescode = response.getcode()
+# if(rescode==200):
+#     response_body = response.read()
+#     print(response_body.decode('utf-8'))
+# else:
+#     print("Error Code:" + rescode)
+#
+# #json 데이터의 딕셔너리로 변환한다. data = json.loads(response.text)
+# #딕셔너리를 호출한다. print(data['name'], '의 날씨는', data['weather'][0]['description'], '입니다.')
+
+
+from selenium import webdriver
+# import requests
+import time
+
+url = "http://www.danawa.com/"
+#
+# params = {
+#     "query" : "손흥민",
+#     "where" : "news",
+#     "ie" : "utf8",
+#     "sm" : "nws_hty"
+# }
+
+# response = requests.get(url, params=params)
+# search = response.url
+driver = webdriver.Chrome()
+driver.get(url)
+log_btn = driver.find_element_by_class_name('my_page_service')
+log_btn.click()
+id = driver.find_element_by_name('id')
+id.send_keys('chs9185')
+time.sleep(1)
+id = driver.find_element_by_name('password')
+id.send_keys('1234')
+time.sleep(1)
+driver.find_element_by_class_name('btn_login').click()
+search = driver.find_element_by_name('k1')
+search.send_keys('ASUS')
+time.sleep(1)
+driver.find_element_by_class_name('btn_search_submit').click()
+time.sleep(10)
+driver.find_element_by_xpath('//*[@id="searchOption"]/div[1]/fieldset[1]/div[2]/dl[1]/dd/ul[1]/li[2]/span/a').click()                   # 클래스가 배열 형태로 되어 있고 인덱스로 찾기가 안되서 xpath로 함.
+
+
+# news = driver.find_elements_by_css_selector('div.news.mynews.section._prs_nws > ul')
+#
+# for new in news:
+#     print(new.text)
+
+# import xlrd
+# file = 'grade_xlsx.xlsx'
+# excel_open = xlrd.open_workbook(filename=file, encoding_override='utf-8', on_demand=True)
+#
+# print(excel_open)                                               #  엑셀파일 올리는 것
+# print(excel_open.sheets())                                      # 시트 주소 올리는 것
+# print(excel_open.sheet_names())                                 # 시트 이름 올리는 것
+#
+# sheet = excel_open.sheet_by_name('Sheet1')                      # Sheet1의 주소
+# print(sheet)
+#
+# sheet = excel_open.sheet_by_index(0)                            # 0번째 시트
+# print(sheet)
+# print(sheet.name)                                               # 그 시트의 이름
+#
+# sheet = excel_open.sheet_by_name('Sheet1')
+# print('인덱스가 0인 행', sheet.row_values(0))                     # 인덱스 주소 검색해서 행의 값들 다 불러오기
+#
+# print('인덱스가 0인 열', sheet.col_values(0))                     # 0번째 열의 값들
+#
+# print('2행의 4열인 셀의 타입과 값은', sheet.cell(1,3))             # 셀의 값 출력
+#
+# print('2행의 4열인 셀의 타입은', sheet.cell_type(1,3))             # 셀의 타입
+#
+# print('전체 행의 수 : ', sheet.nrows)                            # 행의 수
+#
+# print('전체 열의 수 : ', sheet.ncols)                            #열의 수
+
+
+
+
+
+
+# import xlrd
+# import  xlrd.xldate as xl
+# from xlrd.xldate import XLDateAmbiguous
+# from datetime import datetime
+#
+# excel_open = xlrd.open_workbook('xlsxdata.xlsx', encoding_override='utf-8')
+# sheet = excel_open.sheet_by_name('Sheet1')
+# dataset = []
+#
+# for cell_row in range(sheet.nrows):
+#     col = []
+#
+#     for cell_col in range(sheet.ncols):
+#         col.append(sheet.cell_value(cell_row, cell_col))
+#         if sheet.cell_type(cell_row, cell_col) == xlrd.XL_CELL_DATE:
+#             try:
+#                 print(sheet.cell_type(cell_row, cell_col))
+#                 date_value = xl.xldate_as_tuple(sheet.cell_value(cell_row, cell_col),
+#                                                             excel_open.datemode)
+#                 print(datetime(*date_value))
+#
+#             except XLDateAmbiguous as e:
+#                 print(e)
+#     dataset.append(col)
+# print(dataset, end=' ')
+
+
+import csv
+
+with open('csv_data.csv') as f:
+    reader = csv.reader(f)                                      # csv파일 호출
+    print(reader)
+
+    reader = csv.DictReader(f)                                  # CSV파일의 컬럼이나 필드를 통해 호출함
+    print(reader)
+
+# with open('csv_write.csv', 'w', encoding='utf-8', newline='')as f:          # 파일 저장
+#     writer = csv.writer(f)
+# print(writer)
+
+data = []                                                       # 값이 담길 리스트 생성
+with open('csv_data.csv') as f:
+    reader = csv.reader(f)                                      # csv파일 호출
+    count = 0
+
+    for row in reader:
+        if count == 0:                                          # 첫행은
+            header = row                                        # 컬럼들이 저장되어야 할 곳이다.
+        else:                                                   # 나머지 행은
+            data.append(row)                                    # 생성한 리스트에 값을 추가해주면 된다.
+        count = count + 1                                       # 다음 컬럼으로 이동
+
+if header:
+    print(header)                                               # 컬럼 출력
+
+for data_col in data:
+    print(data_col)                                             # 리스트에 담긴 데이터 출력
+
+
+with open('csv_data.csv')as f:
+    reader = csv.DictReader(f)
+
+    for cells in reader:
+        print(cells['날짜'], cells['ammount'])                  # DictReaer로 컬럼명으로 불러 올 수 있음
+
+
+# with open('csv_write1.csv', 'w', encoding='utf-8', newline='') as f:
+#     write = csv.writer(f)
+#
+#     for row in range(10):
+#         write.writerow([row+1, '2018-08-{}'.format((19+row))])
+
+# with open('goods.csv', 'w', encoding='utf-8', newline='') as f:
+#     writer = csv.writer(f, delimiter=",", quotechar='"')
+#     writer.writerow(['ID','상품명,사용연령', '가격'])
+#     writer.writerow(['1000', '비누,유아용', 3000])
+#     writer.writerow(['1001', '장갑,어린이용', 1500])
+#     writer.writerow(['1002', '마스크,성인용', 2300])
+
+with open('goods.csv', encoding='utf-8') as f:
+    reader = csv.reader(f, delimiter=",", quotechar='"')
+
+    for cells in reader:
+        print(cells[0], cells[1], cells[2])
+
+from xml.etree.ElementTree import Element, dump, SubElement, ElementTree, parse
+
+note = Element('note')                                                      # note로 태그 요소 생성
+print(note)
+
+note.attrib['date'] = '20190604'                                            # date 속성 생성 후 값 넣어줌.
+to = Element('to')                                                          # to라는 요소 생성
+to.text = '파이썬'                                                           # to 요소 안에 '파이썬'이라는 값 추가
+note.append(to)                                                             # note에 to요소 추가
+dump(note)
+
+note = Element('note')                                                      # note요소 생성
+to = Element('to')                                                          # to 요소 생성
+to.text = '파이썬'                                                           # to 요소 안에 값 넣기
+note.append(to)                                                             # note요소 안에 to요소 넣기
+SubElement(note, 'from').text = '내용'                                       # from 자식 요소 생성 후 '내용'이라는 값 넣기
+dump(note)                                                                  # 자식 요소는 from이고 to는 자식요소가 아님.
+
+note = Element('note')
+to = Element('to')
+to.text = '파이썬'
+note.append(to)
+subelm = Element('subelm')
+note.insert(1, subelm)                                                      # 하위요소 추가. subelm에 값이 없기 때문에 단독태그로 쓰임
+dump(note)
+
+note.remove(subelm)                                                         # 하위요소 삭제
+dump(note)
+
+# SubElement(note, 'from').text = '내용'  # 자식요소 생성
+# note = Element('note')
+# note.attrib['date'] = '20190604'
+# to = Element('to')
+# to.text='파이썬'
+# note.append(to)
+# ElementTree(note).write('note1.xml', xml_declaration=True, encoding='utf-8') # xml_delaration을 True로 하면 xml파일안에 xml설정이 들어감.
+
+with open('note1.xml', encoding='utf-8') as f:
+    tree = parse(f)                                                         # xml 태그 요소 트리를 구문 분석
+    note = tree.getroot()                                                   # root태그 요소 반환
+print(note)
+print(note.keys())                                                          # xml파일의 모든 속성의 키값을 리스트로 반환
+print(note.get('date'))                                                     # date속성의 값을 가져오기
+print(note.items())                                                         # 속성과 속성의 값을 리스트로 반환
+from_tag = note.findtext('from')                                            # 하위 태그의 텍스트 값을 반환
+print(from_tag)
+
+from xml.etree.ElementTree import Element, SubElement, dump, ElementTree
+
+note = Element('note')
+note.attrib['date'] = '20190604'
+to = Element('to')
+to.text = '파이썬'
+note.append(to)
+SubElement(note, 'from').text = '내용'
+SubElement(note, 'heading').text = '의미'
+SubElement(note, 'body').text = '객체지향 언어의 꽃이다.'
+
+# def indent(elem, level=0):
+#     i = '\n'+level*' '                                                      # 줄바꿈과 들여쓰기의미. 시작은 들여쓰기가 없으니까 level은 0이다.
+#     if len(elem):                                                           # elem에 sub가 있는지 없는지 확인. note는 sub가 3개 있고 그 sub에 sub가 없으니까 0개 결국 else에 들어가게 됨.
+#         if not elem.text or not elem.text.strip():                          # text형식이 아니거나 앞뒤로 공백을 제거해주지 않는다면(note부분임. text가 없음.)
+#             elem.text = i+' '                                               # 들여쓰기를 해준다.               => 이거의 의미는 note태그가 끝난 후에 바로 sub태그가 와야함. 그 첫번째 sub태그에 들여쓰기를 해주기 위해 줄바꿔준 후 한칸 띄워줌.
+#         if not elem.tail or not elem.tail.strip() :                         # tail속성(문단의 끝. 결국 note태가그 끝날때까지)이 아니거나 앞뒤에 공백을 제거해주지 않는다면
+#             elem.tail = i                                                   # 바로 줄바꿈.
+#         for elem in elem:                                                   # 위에 if문이 다 끝난 후에 level에 1을 더해줘서 들여쓰기 한번 할 수 있도록 함.
+#             indent(elem, level+1)
+#         if not elem.tail or not elem.tail.strip():                          # level이 올라간 상태에서 줄바꿈. 그러면 자동으로 들여쓰기함.(어차피 sub태그가 한번에 다 들어왔기 때문에 첫번째 서브태그만 강제로 띄워주고 나머지 서브태그는 level=1이 적용된다.(무슨소리.,..?)
+#             elem.tail = i
+#     else :                                                                  # 나머지 서브태그안에 서브태그가 없기 때문에 else로 속한다.
+#         if level and (not elem.tail or not elem.tail.strip()):
+#             elem.tail = i                                                   # tail이 아니므로 들여쓰기 안하고 그냥 적어줌.
+# indent(note)
+# ElementTree(note).write('note3.xml', xml_declaration=True, encoding='utf=8')
+#
+#
+# with open('note3.xml', encoding='utf-8') as f:
+#     s = f.read()
+# print(s)
+
+from lxml import etree
+root = etree.Element('group')                                           # 태그 요소 지정
+print(root)
+
+members = etree.Element('members')                                      # members요소 생성
+member = etree.SubElement(members, 'member')                            # members요소에 member하위요소 생성
+print(member)
+
+output = etree.tostring(root, pretty_print=True)                        # tostring으로 인자인 요소를 XML 트리의 인코딩된 문자열 표현으로 직렬화, pretty_print 옵션은 한줄로 출력
+print(output)
+print(output.decode('utf-8'))
+
+# tree = etree.parse('group.xml')                                       # xml파일을 파싱
+# print(tree)
+
+# tree = etree.parse('note3.xml')
+# root = tree.getroot()                                                 # 루트 태그 요소 반환
+# print(root)
+
+# tree = etree.parse('note3.xml')
+# root = tree.getroot()
+# kids = root.getchildren()                                             # 하위 태그 요소들 리스트로 반환.
+# print(kids)
+
+
+from lxml import etree
+import pprint as pp
+
+members = ['임꺽정','양산박','로빈 후드','아르센 뤼팽']
+nations = [['한국','임꺽정'], ['중국','양산박'], ['영국','로빈 후드'], ['프랑스','아르센 뤼팽']]
+root = etree.Element('group')
+w_name = etree.Element('name')
+root.append(w_name)
+w_name.text = '의적들'
+w_name.set('alias', 'companion')
+w_members = etree.Element('members')
+for member in members:
+    w_member = etree.SubElement(w_members, 'member')
+    w_member.text = member
+root.append(w_members)
+
+w_nations = etree.Element('nations')
+for nation in nations :
+    w_nation = etree.SubElement(w_nations, 'nation')
+    w_nation.text = nation[1]
+    w_nation.set('order', nation[0])
+root.append(w_nations)
+# out = etree.tostring(root, pretty_print=True, encoding='utf-8')
+# print(out.decode('utf-8'))
+etree.ElementTree(root).write('group2.xml', pretty_print=True, encoding='utf-8', xml_declaration=True)
+
+
+
+from lxml import etree
+
+
+
+a = ['SIDO', 'MEASURE_DATE', 'SLFR_DXD', 'CRBN_MNXD', 'OZON']
+b = [{'SIDO':'부산', 'MEASURE_DATE':'20160101', 'SLFR_DXD':'1', 'CRBN_MNXD':'2', 'OZON':'3'},
+     {'SIDO':'수원', 'MEASURE_DATE':'20160201', 'SLFR_DXD':'4', 'CRBN_MNXD':'5', 'OZON':'6'},
+     {'SIDO':'강남', 'MEASURE_DATE':'20170101', 'SLFR_DXD':'7', 'CRBN_MNXD':'7', 'OZON':'7'},
+     {'SIDO':'과천', 'MEASURE_DATE':'20160301', 'SLFR_DXD':'8', 'CRBN_MNXD':'8', 'OZON':'8'}
+    ]
+root = etree.Element('data')
+for i in range(len(b)):
+    name = '행'+ str(i + 1)
+    w_data = etree.Element(name)
+    for j in range(len(b)):
+        w_member = etree.SubElement(w_data, a[j])
+        w_member.text = b[i][a[j]]
+    root.append(w_data)
+
+etree.dump(root)
+
+# out = etree.tostring(root, pretty_print=True, encoding='utf-8')
+# print(out.decode('utf-8'))
+# etree.ElementTree(root).write('group2.xml', pretty_print=True, encoding='utf-8', xml_declaration=True)
+
+
+
+from lxml import etree
+
+members = []
+nations = []
+tree = etree.parse('group2.xml')
+root = tree.getroot()
+kids = root.getchildren()
+
+for child in kids:
+    if child.tag=='name':                                                   # child에 name이면
+        group_name = child.text                                             # name에 할당되어있는 내용 group_name에 할당함.
+
+    elif child.tag == 'members':
+        for r_member in child:
+            members.append(r_member.text)                                   # for문 돌릴때까지 member이름 넣기
+
+    elif child.tag == 'nations' :
+        for r_nation in child:
+            nations.append([r_nation.get('order'), r_nation.text])          # 국가 이름넣기
+
+print('그룹에 대한 정보는 다음과 같습니다.')
+print('멤버:', end='')
+
+for index, member in enumerate(members):
+    if index>=0:
+        print(' ', end='')
+        print(member, end='')
+print('\n[국가정보]')
+
+for nation_member in nations:
+    print(' * {} : {}'.format(nation_member[0], nation_member[1]))
+    
+    
+# from bs4 import BeautifulSoup
+# import urllib.request as ureq
+# import os.path as pt
+# from lxml import etree
+#
+#
+#
+# # 1번
+# url = "http://www.weather.go.kr/weather/forecast/mid-term-rss3.jsp?stnld=108"
+# savename = 'forecat.xml'
+# if not pt.exists(savename):
+#     ureq.urlretrieve(url, savename)
+# xml = open(savename, encoding='utf-8').read()
+# soup = BeautifulSoup(xml, 'lxml-xml')
+# info = {}
+# for location in soup.find_all('location'):
+#     name = location.find('city').string
+#     weather = location.find('wf').string
+#     if not weather in info:
+#         info[weather] = []
+#     info[weather].append(name)
+# for weather in info.keys():
+#     print('날씨', weather)
+#     for name in info[weather]:
+#         print(name)
+#
+# # # 2번
+# info = {}
+# tree = etree.parse('forecat.xml')
+# root = tree.getroot()
+# kids = root.getchildren()
+#
+# for location in root.iter('location'):                                  # iter lxml안에 반복. 떨어진 자식까지 찾을 수 있음.
+#     weath =  location.find('data')
+#     name = location.find('city').text
+#     weather = weath.find('wf').text
+#     # weather = location.get('wf')
+#     if not weather in info:
+#         info[weather] =[]
+#     info[weather].append(name)
+# for weather in info.keys():
+#     print('날씨', weather)
+#     for name in info[weather]:
+#         print(name)
+
+
+import json
+from io import StringIO
+a = {'name':'홍길동','birth':'0525','age':30}
+# io = StringIO()
+# json.dump(a, io, ensure_ascii=False)
+# print(io.getvalue())                                                    # a의 딕셔너리 값을 구함
+
+print(json.dumps(a, ensure_ascii=False, indent=4))                                                    # 위의 방법을 이 한줄로 끝낼 수 있음. indent는 4임.
+
+print(json.dumps([1,2,3]))
+print(json.dumps([4,5,6]))                                              # 그냥 출력
+
+a = '{"name":"홍길동","birth":"0525","age":30}'
+io2 = StringIO(a)
+print(json.load(io2))                                                   # load는 객체 계층 구조를 바이트 객체에서 읽고 그 안에 지정된 재구성된 객체로 반환하여 실체 객체를 변환
+print(type(io2))                                                        # Stringio를 한 후 타입을 확인하면 io타입으로 나옴
+# x = json.load(io2)
+# print(type(x))                                                        # io타입을 역직렬화한 상태에서 타입을 확인하면 오류 남. 클래스 타입을 확인 할 수 없는 경우랑 같은 이치
+
+
+a = {'name':'홍길동','birth':'0525','age':30}
+s = json.dumps(a, ensure_ascii=False)
+print(type(s))                                                          # dumps는 str형태로
+d = json.loads(s)                                                       # load는 다시 원본형태로
+print(type(d))
+print(d)
+
+data = {
+    "price" : {
+        "사과" : 80,
+        "오렌지" : 90
+    }
+}
+s = json.dumps(data, ensure_ascii=False)
+items = json.loads(s)
+print('사과의 가격은 {}입니다.'.format(items['price']['사과']))
+
+# a = {'name':'홍길동','birth':'0525','age':30}
+# with open('data.json', 'w', encoding='utf-8') as f:
+#     f.write(json.dumps(a, ensure_ascii=False, indent=4))
+
+with open('data.json', encoding='utf-8-sig') as f:
+    json_call = json.load(f)
+print(json_call)
+
+import urllib.request as ureq
+import os.path
+import json
+from io import StringIO
+
+url = "https://api.github.com/repositories"
+savename = 'repository.json'
+
+if not os.path.exists(url):
+    ureq.urlretrieve(url, savename)
+# data = open(savename, encoding='utf-8').read()
+# io = StringIO(data)
+# items = json.load(io)
+with open(savename, encoding='utf-8') as f:
+    items = json.load(f)
+
+for item in items:
+    print('저장소 이름은 {}이며 소유자는 {}입니다.'.format(item['name'], item['owner']['login']))
+    
+ with open('data_tab_marker.tab') as f:
+    for line in f:
+        print('탭 문자 포함 : ', line.partition('\t'))
+        line = line.strip()
+        print('탭 문자 제거 : ', line.split('\t'))                           # 설명 되어 있음
+
+
+import csv
+data = []
+with open('data.tab') as f:
+    reader = csv.reader(f, dialect=csv.excel_tab)                           # 엑셀에서 탭으로 구분 옵션으로 만든 csv파일이다.
+    count = 0                                                               # csv.excel은 기본적으로 포맷팅 규칙으로 엑셀에서 생성한 csv파일을 읽고 쓸 때 사용한다.
+    for row in reader:                                                      # unix_dialect는 문자로 개행으로 쓰고 모든 필드에 따옴표를 넣는다.
+        if count==0:
+            header = row
+        else:
+            data.append(row)
+        count = count + 1
+if header:
+    print(header)
+for datarow in data:
+    print(datarow)
+
+# with open('data_write.tab', 'w', encoding='UTF-8', newline='')as f:
+#     writer = csv.writer(f, dialect=csv.excel_tab)
+#     for row in range(10):
+#         writer.writerow([row+1, '2018-08-{}'.format((19+row))])           # 이 형식으로 저장하겠다.
+
+import struct
+mask = '9s14s5s'
+with open('fixed_width.data', 'rb') as f:
+    for line in f:
+        fields = struct.unpack_from(mask, line)
+        print([field.strip() for field in fields])  
+
+
+
+
