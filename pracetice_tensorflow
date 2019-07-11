@@ -1,0 +1,8 @@
+import tensorflow as tf
+
+a = tf.Variable(100)
+sess = tf.compat.v1.Session()
+sess.run(tf.compat.v1.global_variables_initializer())                           # 초기화
+print(sess.run(a))
+op = tf.compat.v1.assign(a, a+10)                                               # a참조와 a+10으로 변경해주겠다.
+tf.compat.v1.summary.FileWriter("C:/tflog/", sess.graph)
