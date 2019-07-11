@@ -1,0 +1,1303 @@
+#import keyword                          #keyword 라이브러리 임폴트
+#print('키워드 리스트' ,keyword.kwlist)    #keyword 라이브러리 안에 있는 메소드 확인
+#print('키워드 개수', len(keyword.kwlist)) #keyword 라이브러리 안에 있는 메소드 갯수 확인
+
+
+_ = 10
+print(_)                        #_는 최종적으로 한 것 불러오는 의미
+
+x, _, y =[1,2,3]
+print(x, y)                     #여기서의 _는 생략의 의미 메모리에 기억 안됨.
+
+
+a = 1
+print(a, type(a))               # 숫자형
+b = '안녕'
+print(b, type(b))               # 문자형
+c = []
+print(c, type(c))               # list형
+d = ()
+print(d, type(d))               # 튜플형
+e = {}
+print(e, type(e))               # 딕셔너리형
+
+a = 1
+b = 1.5
+print(a + b)                    # 자료형의 동적 할당
+
+print(3+2)
+print(3-2)
+print(3*2)
+print(3/2)                      # 단순 계산
+
+a = 1
+b = a
+print(b)                        # 자바랑 같음.
+
+x = y = 0
+print(x)                        # 객체의 연속 할당
+
+#1 + 3 = a                       # 오류 오른쪽에서 할당하면 안됨
+
+c,d = 3,4
+print(c)
+print(d)                        # ,로 연속적으로 할당해줄 수 있음
+
+e = 3.5; f = 5
+print(e)
+print(f)                        # 파이썬에서의 ;쓰임은 이런식으로 연속 할당 시켜줄 때 쓰임
+
+a = 1
+b = 3
+print(a + \
+      b)                        # 파이썬에서 한줄에 다 코딩하기 어려울정도로 긴 경우 \를 사용해 연속으로 코딩할 수 있다.
+
+e = 3.5; f = 5
+e, f = f, e
+print('e = ', e)
+print('f = ', f)                # 따로 변수를 하나 더 안만들어도 이런식으로 스왑을 해서 쓸 수 있다.
+
+a = [1,2,3]
+print(a[0])                     # list형식에서 index는 파이썬에서도 정해져 있다.
+print(a[0:2])                   # list형식에서 연속으로 나오게 하고 싶을 때 이러면 된다. 뒤에 2는 2개만 출력하겠다 라는 의미이다.
+
+a = 1
+if a == 1:
+    print('4칸 들여쓰기')
+     #print('5칸 들여쓰기')       # 이렇게 들여쓰기가 안맞을 경우 에러가 난다.
+
+def add(a,b):
+    return a+b
+print(add(3,4))                  # 일반적인 함수는 이렇게 사용한다.
+
+a = 1
+if a==1:
+    print('참입니다')             # 파이썬에서의 if문
+
+for a in [1,2,3]:
+    print(a)                       # 파이썬에서의 for문
+
+i = 0
+while i<3:
+    i = i+1
+    print(i)                        # 파이썬에서의 while문
+
+
+import sys
+print(sys.version)
+print(sys.version_info)                #파이썬 버전 확인
+
+import calendar
+calendar.prmonth(2018, 12)              #월별 출력
+
+print(bin(10))                          #2진수로 변환
+print(oct(10))                          #8진수로 변환
+print(hex(10))                          #16진수로 변환
+print(float(5))                         #float형태로 변환
+print(abs(-3))                          #보수 제거
+print(divmod(7, 3))                     #a와b의 몫과 나머지 구하기
+
+print(int('3'))                         #문자형으로 만들어도 숫자형으로 표시할 수 있고 float형태나 글자로 만들면 int형 쓸 수가 없음. 파이썬의 기능
+print(int(3.5))                         #소수점 제거
+print(int('11', 2))                     #2진수 값인 11을 10진수로 변환
+print(int('11', 8))                     #8진수 값인 11을 10진수로 변환
+print(int('11', 16))                    #16진수 값인 11을 10진수로 변환
+print(int('11', 10))                    #10진수 값인 11을 10진수로 변환
+
+print(pow(2, 3))                        #2의 3승
+print(pow(2, -3))                       #2의 -3승
+print(pow(2.3, 3.5))                    #2.3의 3.5승
+
+print(complex(2,3))                     #앞부분은 실수부 뒷부분은 허수부
+
+
+#print(round(1.5))
+#print(round(2.5))                   #파이썬은 오사오입
+
+#print(dir([1,2,3]))                 # dir은 객체가 가지고 있는 모든 속성의 이름들을 리스트로 반환
+
+#string = 'a'
+#print(hash(string))                 # hash는 인자인 객체의 해시값을 반환(hash는 주소값)
+
+#a = 3
+#print(id(a))
+#b = a
+#print(id(b))                        # id는 정수 객체의 고유 주소값을 반환
+
+#print(type(1))
+#print(type('abc'))
+#print(type([1,2]))
+#print(type((1,2)))                  # type 반환
+
+#class Person:
+#    pass
+#a = Person
+#print(isinstance(a, Person))        # 객체가 특정 클래스의 객체인지를 확인하고 반환
+
+data = 3
+print(bytes(data))                  # 정수를 2진수 객체로 반환..?
+print(bytearray(data))              # 2진수 배열객체로 반환
+
+a = [1,2,3,4,5]
+b = slice(1, 4)
+print(a[b])                         # 함수는 인자에 대해서 슬라이싱을 지원한다.
+
+print(list('python'))
+print(list((1,2,3)))                # list는 나누어져 반환한다
+
+print(tuple('abc'))
+print(tuple([1,2,3]))
+print(tuple((1,2,3)))               # tuple도 나누어져 반환한다
+
+print(dict([(1,'one'), (2,'two')]))
+print(dict({1:'one', "two":2}))     # dict는 key값이 있기 때문에 list나 tuple처럼 나누어져 반환할 수 없음
+
+print(set([1,2,3,4,5]))
+print(set({1:2, 2:3,3:4, 1:5, 2:5, 3:5}))   #set은 어떤것이든 새로운 세트 객체로 반환함
+
+print(list(range(10)))
+print(list(range(3,10)))
+print(list(range(4,10,2)))                  # 파이썬2에서는 range(10)만 했어도 1~10까지 나왔지만 파이썬3에서는 list(range(10))해야지 1~10 까지 출력함.
+
+print(bool(0))
+print(bool(1))                              # boolean 타입에서는 0일때만 false 1이상인 경우 무조건 true
+
+print(list(zip([1,2,3],[4,5])))             # 각 인덱스별로 묶어줌 그래서 3은 안나옴
+
+print(eval('1+2'))
+print(eval("'홍'+'길'+'동'"))
+print(eval('divmod(4, 3)'))                  # 표현한 것을 동적으로 실행해줌(?)
+
+print(all([1,2,3,0]))                       # and와 같은 의미
+print(any([1,2,3,0]))                       # or와 같은 의미
+
+print(len('python'))
+print(len([1,2,3]))                         # len은 길이 함수
+
+for name in enumerate(['홍길동', '전우치', '임꺽정']):
+    print(name)                                             # enumerate는 인덱스값과 실제 값을 같이 출력
+
+def postive_number(x):
+    return x>0
+print(list(filter(postive_number, [1,2,3,-4,-5,-6])))       # 트정 조건 거르기
+
+def two_times(x):
+    return x*2
+print(list(map(two_times, [1,2,3,4])))                      # map은 반복인자의 자료형으로 반복인자의 개수만금 반복하는 것
+
+a = [1,6,3,8,6,2,9]
+print(list(reversed(a)))                                    # 뒤바꾸기
+
+print(sorted(['a','bf','b']))                               # 정렬
+
+print(max(1,2))
+print(max([1,2,3]))
+print(max('python'))                                        # 최대값은 우리가 문자형도 가능하다.
+
+print(min([1,2,3]))
+print(min('python'))                                        # 값도 마찬가지
+
+a = [1,2,3,4,5]
+print(sum(a))
+print(sum(a, 10))                                           # a를 더한거에 10을 더 더하기
+
+# a = range(10)         #a에 0,1,2,3,4,5,6,7,8,9를 넣는다.
+# print(a)
+# print(0 in a)         #0이 a의 범위 안에 있나
+# print(10 in a)        #10이 a의 범위 안에 있나
+# print(list(a))
+
+# a = ['안', '녕']
+# print(a[0])           #a의 0번째 값을 출력한다.
+# b = ['파이썬', '자바']
+# print(b[0]+b[1])      #b의 0번째와 1번째 값을 출력한다.
+
+# a = [1, 2]
+# print(a[2])             #2번째 인덱스는 없다.
+
+# a = [1,2,3]
+# print(a[-1])              #뒤에서 첫번째
+# print(a[-2])                #뒤에서 두번째
+# print(a[-3])                #뒤에서 세번째
+# print(a[-4])                #뒤에서 네번째는 없음
+
+# a = [1,2,3,4]
+# del  a                       #리스트 자체를 삭제
+# print(a)
+
+# a = [1,2,3,4]
+# del a[0]                    #리스트의 0번째 값 삭제
+# print(a)
+
+# a = ['1','2','3']
+# a[0] = 7
+# print(a)
+# a[0] = 10
+# print(a)
+# a[1:2] = ['a','b','c']       #1번째부터 2번째를 슬라이싱 하고 이걸로 대체한다
+# print(a)
+# a[1] = ['a','b','c']        #1번째를 이 리스트로 대체한다
+# print(a)
+# b = [100,200,300,400]
+# b[2] = b[2]+23              #2번재 리스트에 23을 더한다.
+# print(b)
+
+# a = [1,2,3,4]
+# b = [a,1,2,3]                 #2차원 배열
+# print(b[0])
+# print(b[0][1])                  #b리스트의 0번째인 a리스트, a리스트의 1번째 값을 출력한다.
+
+# a = [1,2,3,4]
+# b = [a,1,2,3]
+# a[0] = 100                          #이러면 b리스트 출력 값도 변함.
+# print(b)
+
+# a = ['a','b','c','','d','e']
+# print(a[1:3])                        #1번째와 3번째 사이 출력 그럼 1,2인덱스 출력
+# print(a[1:4])                           #1번째와 4번째 사이 출력 그럼 1,2,3 인덱스 값 출력
+# print(a[0:6])                           #0번째와 6번째 사이 출력 그럼 다 출력
+
+# a = ['a','b','c','d','e','f','g']
+# print(a[1:])                                #1번째부터 끝까지 다 출력
+
+# a = ['a','b','c','d','e','f','g']
+# print(a[:])                                     #전체 슬라이싱 출력
+
+# a = ['파이썬', '자바', 123, 1234]
+# a[0:2] = [100, 200]                                 #0번째와 2번째 사이에 100,200을 대체하겠다.
+# print(a)
+
+# a = [10, 20, 30, 40]
+# a[0:1] = [1,2,3]                                    #위와 동일 0번째와 1번째 사이에 1,2,3을 대체하겠다 그러면 10이 없어지고 1,2,3이 들어감.
+# print(a)
+
+# a = [10, 20, 30, 40]
+# a[0:2] = [1]                                            #리스트 값인 10, 20대신 1을 넣겠다.
+# print(a)
+# a = [10, 20, 30, 40]
+# a[0:2] = [1,2]                                          #리스트 값인 10, 20대신 1,2를 넣겠따.
+# print(a)
+
+# a = [10,20,30,40]
+# a[0:2] = []                                             #리스트 값인 10, 20을 빈 인덱스로 채우겠다(지우겠다.)
+# print(a)
+
+# a = [10, 20, 30, 40]
+# a[1:1] = [1,2]                          #10과 20사이에 1,2값을 넣겠다.
+# print(a)
+# a[:0] = a                               #처음에 리스트인 a를 넣겠다.
+# print(a)
+
+# a = [1,2,3,['a','b','c'], 4, 5]
+# print(a[2:5])
+# print(a[3][:2])                         #중첩 리스트 안에있는 값에서 2번째 까지 슬라이싱해서 출력한다.
+
+# a = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+# print(a[0:7:2])                             # a[0:7:2]는 0번부터 시작해서 7번째까지 2칸씩 띄어 넘어서 출력
+
+# a = ['a','b','c','d','e','f','g']
+# print(a[::2])
+# print(a[::-2])                              # 처음부터 2칸씩 출력
+
+# a = [1,2,'hello']
+# print(a)                                        # 리스트 패킹
+
+# x,y,z = [1,2,'hello']
+# print(x,y,z)                               # 리스트 언패킹
+# x,y = [1,2,'hello']
+# print(x,y)                                  # 객체 요소의 크기가 달라서 오류
+
+# a = [12345]
+# b = a[0]
+# print(b)
+# print(type(b))                          #12345가 값이기 때문에 그냥 int형으로 나옴
+
+# a = ['12345']
+# b = a[0]
+# print(b)
+# print(type(b))                          # 위와 같은 형태
+
+# a = [(1,2,3,4,5)][0]
+# print(a)
+# print(type(a))                              # 소괄호 적혔기 떄문에 튜플
+
+# a = [{'name':'홍길동'}][0]
+# print(a)
+# print(type(a))                              # 중괄호 적혔기 때문에 딕셔너리
+
+# a = [[1,2,3,4,5]][0]
+# print(a)
+# print(type(a))                              # list안에 list
+
+# a = [1,2,3]
+# a.append(4)
+# a.append([60,70])                           # append는 뒤로 들어가고 list를 넣으면 list그대로 들어간다
+# a.append([60,70])
+# print(a)
+
+# a = [1,2,3,4,5]
+# print(a.index(3))                               # 값이 3인 인덱스를 출력
+
+# a = [1,2,2,2,3,4]
+# print(a.count(2))                               # 값이 2인 갯수 출력
+# print(a.count(5))                               # 값이 5인 갯수 출력
+
+# a = [1,2,3]
+# a.insert(1, 4)
+# print(a)
+# a = [1,2,3,5]
+# a.insert(3,4)                                    # insert(index, value) index위치에 value를 넣음 대체가 아니라 추가로 끼워 넣는 것임
+# print(a)
+
+# a = [1,2, -10, -7, 100]
+# a.reverse()                                         # 순서 뒤바꾸기
+# print(a)
+
+# a = [1,2,-10,-7,-100]
+# a.sort()                                    # 숫자 오름차순
+# print(a)
+# b = ['a','c','b']
+# b.sort()                                    # 문자도 오름차순 가능
+# print(b)
+
+# a = [10,20,30,40,50]
+# a.extend([60,70])                               # 뒤에 리스트를 추가로 넣어주는 것.
+# print(a)
+
+# a = [10, 20, 30, 40, 50]
+# a.remove(10)                                    # 10인 값 삭제
+# print(a)
+# b = [10, 20, 30, 20, 40, 50]                    # 값이 중복이면 앞에 있는 값 먼저 삭제 -> 그래서 반복문이랑 많이 쓰임
+# b.remove(20)
+# print(b)
+
+# a = [10, 20, 30]
+# a.pop()
+# print(a)
+# a.pop()                                         # pop는 맨 뒤에거 부터 삭제
+# print(a)
+# b = [10, 20, 30]
+# b.pop()
+# print(b)
+# b.pop()
+# print(b)
+
+# a = [1,6,3,8,6,2,9]
+# a.sort()
+# print(a)
+
+# a = [1,5,3,6,7,4,2]
+# a.sort(reverse=False)
+# print(a)
+# a.sort(reverse=True)                            # 내림차순
+# print(a)
+
+# a = [1,6,3,8,6,2,9]
+# b = sorted(a)
+# print(b)
+
+# a = [1,6,3,8,6,2,9]
+# a.reverse()                                     # 리스트 역순
+# print(a)
+
+# a = [1,6,3,8,6,2,9]
+# print(list(reversed(a)))                        # 이렇게도 가능함
+
+# s = [10, 20, 30, 40, 50]
+# s.append(60)
+# print(s)
+# print(s.pop())                                      # stack 구조
+# print(s)
+
+# q = [10, 20, 30, 40, 50]
+# q.append(60)
+# print(q)
+# print(q.pop(0))                                         # que 구조
+# print(q)
+
+# marks = [90,25,67,45,80]
+# number = 0
+#
+# for i in marks:
+#     number = number + 1
+#     if i>=60:
+#         print('{}번 학생은 합격입니다.'.format(number))
+#     else:
+#         print('{}번 학생은 불합격입니다.'.format(number))
+#
+
+# a = 1,                            # 이것도 튜플
+# print(type(a))
+# b = 1,2,3
+# print(type(b))
+
+# a = (1,)
+# print(type(a))
+# b = (1)                             # 튜플의 기준은 ()가 아닌 ,임
+# print(type(b))
+
+# a = ('1','2','3')
+# print(type(a))
+# print(len(a))
+# print(a)                              # 튜플은 문자형도 등록 가능함
+
+# a = (0.1, .2, 3., 3.1)                  # . 앞뒤 생략 가능
+# print(type(a))
+# print(len(a))
+# print(a)
+
+# a =('월','화','수','목','금','토','일')
+# print(type(a))
+# print(len(a))
+# print(a)
+
+# print(tuple('abc'))
+# print(tuple([1,2,3]))                   # 튜플은 이런식으로 자동 분리 될수 있게 사용도 가능함
+# print(tuple((1,2,3)))
+# print(tuple(1))
+
+# a = (1,2,3)
+# b = (4,a,5)                                 # 이런식으로도 가능함
+# print(b)
+
+# a = {'하나':1, '둘':2}
+# b = ('시작',a,'끝')                        # 튜플안에 딕셔너리도 가능함!
+# print(b)
+
+# a = ('1','2','3')
+# b = (1,2,3)
+# print(b+b)
+# print(a+b)
+
+# a = (1,2,3,4)
+# b = (a,1,2,3)                               # 2차원 튜플
+# print(b[0])
+# print(b[0][0])
+# print(b[0][1])
+# print(b[0][2])
+# print(b[0][3])
+
+
+
+# a = (1,2,3,4)
+# b = (a,1,2,3)
+# a[0] = 100                                      # 2차원 튜플은 변경 불가
+
+# a = ('a','b','c','','d','e')                      # 튜플의 슬라이싱은 다른 방법과 같다.
+# print(a[1:3])
+# print(a[1:4])
+# print(a[0:6])
+
+# a = (1,2,3)
+# a = (4,) + a[1:]
+# print(a)
+# b = ('a','b','c','d','e','f')                       # 코드 분석해
+# b = b[:3] + ('D',) + b[4:]
+# print(b)
+#
+
+# a = (1,2,'hello')
+# print(a)                                          # 튜플 패킹
+
+# x, y, z = 1, 2, 'hello'
+# print(x, y, z)
+# x, y = (1, 2, 'hello')                            # 튜플 언패킹, 앞에서 한 것이랑 같다.
+# print(x, y)
+
+# a = '성공은 %d%% 영감과 %d%%의 노력이다.'
+# number = (1,99)
+# print(a%number)                                     # 마스크 문자
+
+# print('name={}, age={}'.format('홍길동', '33'))        # format 메소드
+
+# a = (1,2,3,4,5)
+# print(a.index(3))                                   # 값이 3인 인덱스
+
+# a = (1,2,2,2,2,3,4)
+# print(a.count(2))
+# print(a.count(5))
+
+marks = (90, 25, 67, 45, 80)
+for i in range(0,5):
+    if marks[i]>=60:
+        print('{}번 학생은 합격입니다.'.format(i+1))
+    else:
+        print('{}번 학생은 불합격입니다.'.format(i + 1))
+        
+        
+a = {'id':'name', 'name':'song'}                                            # 딕셔너리 형식 키와 값은 중복의 의미가 아니라 아에 다른 지역의 의미다.
+print(type(a))
+print(a['name'])                                                            # 딕셔너리 부를 때는 키값으로 불러옴.
+
+a = {5:25, 6:26}
+print(type(a))
+print(a[5])                                                            # 숫자도 가능함
+
+# print(dict(one=1, two=2))
+# print((dict(1='가', 2='나'))                                              # 글자는 이런형식으로 안됨
+
+print(dict([(1, 'one'), ('two', 2)]))                                   # 이런식으로도 딕셔너리 설정 가능
+print(dict({1:'one', 'two':2}))
+
+a = ('하나', '둘',' 셋')
+b = ['one', 'two', 'three']
+print(dict(zip(a,b)))                                           # 이렇게 튜플 설정한 뒤에 그 값을 키와 값으로 딕셔너리 설정이 가능 한데 이 방법은 절대로 하지 않는 것으로.. 키 값은 바뀌면 안됨.
+
+a = {'1':'3번', '2':'2번', '3':'3번'}
+a['1'] = '1번'
+print(a)
+a['2'] = 2                                                          # 딕셔너리의 값 변경
+print(a)
+print(len(a))
+
+a = {'one':1, 'two':2, 'three':3, 'four':4}
+print('one' in a)
+print('1' in a)                                                             # 있는지 없는지 여부는 키로 찾아야 가능함 값은 불가
+
+a = '%(name)s, %(age)s'
+print(a%{'name':'홍길동', 'age':'33'})
+
+a = {'one':1, 'two':2, 'three':3, 'four':4}
+del a['one']                                                                # 키를 이용해 지울 수 있음
+print(a)
+
+a = {}
+a['one'] = 1
+print(a)
+a[1] = 4                                                                    # 1이라는 키 값이 새로 생기는 것임
+print(a)
+a[(1,)] = 5                                                                 # 튜플의 값이 키가 되는 것임
+print(a)
+
+a = {'name':'a', 'name':'b'}
+print(a)                                                                    # 값이 중복되서 나오지는 않지만 어떤 값이 나오는지는 알 수가 없다.
+
+a = {'a','a','b','b','c','c','d','d'}
+print(type(a))
+print(a)
+
+a = {1,2,3,4,5,5,5}
+print(type(a))
+print(a)
+
+a = {(1,), (2,), (3,), (4,), (5,), (5,), (5,)}                              # 어떤식으로 하든 {}들어가고 :이 들어가지 않으면 set형식임
+print(type(a))
+print(a)
+
+# a = {[1], [2], [3], [4], [5], [5], [5]}                                      # 리스트 형식은 변경 가능한 거 적으면 안되기 때문에 이런식으로 적으면 안됨..
+# print(a)
+#
+# a = {{1:2}, {2:3}, {3:4}, {1:5}, {2:5}, {3:5}}                              # a객체를 출력하면 변경 가능한 자료형을 사용할 수가 없으므로 오류가 남.
+# print(a)
+
+a = set('aabbccdd')                                                             # 중복 안함.
+print(a)
+
+a = set((1, 2, 3, 4, 5, 5, 5))                                                  # 중복 안함
+print(a)
+
+a = set([1, 2, 3, 4, 5, 5, 5])                                                  # 리스트도 중복 안함.
+print(a)
+
+a = set({1:2, 2:3, 3:4, 1:5, 2:5, 3:5})                                         # 딕셔너리도 중복 안함.
+print(a)
+
+# a = set(112233)                                                               # 정수는 set함수의 인자로 사용할 수가 없음.
+# print(a)
+
+# a = set([1, 2, 3], [4, 5, 6])                                                   # 요소 2개 안됨.
+# print(a)
+
+a = set([4, 5, 6, 10, 20, 30])
+print(tuple(a))
+b = set((4, 5, 6, 10, 20, 30))                                                  # 서로 이렇게 리스트와 튜블 치환이 가능함
+print(list(b))
+
+a = [1, 1, 2, 2, 3, 3, 4, 4, 5]
+print(set(a))
+b = (1, 1, 2, 2, 3, 3, 4, 4, 5)                                                 # 튜플이나 리스트가 셋으로 변환하는 것도 가능함.
+print(set(b))
+
+a = set([1,1,2,2,3,3,4,4,5])
+b = list(a)
+print(b)
+print(a)
+print(b[0])
+print((b[1:3]))
+c = set((1,1,2,2,3,3,4,4,5))
+d = tuple(c)
+print(d)
+print(d[0])
+print(d[1:3])
+
+a = set([1,2,3,4,5,6,7,8,9])
+print(5 in a)
+print(10 not in a)                                                              # 이게 맞는지?
+
+# a = set([1, 2, 3, 4, 5, 6, 7, 8,9])
+# del a
+# print(a)                                                                        # a set 삭제해서 음슴
+
+a = set([4, 5, 6, 10, 20, 30])
+b = a.copy( )
+print(a==b)
+print(a is b)                                                                   # 복사해도 객체 동등성이 같지 않기 때문에 false
+
+a = set( )
+print(a)                                                                        # 빈 객체는 출력이 set()이다.
+
+a = set([1, 2, 3, 4])
+b = set([3, 4, 5, 6, 7, 8])
+print(a|b)
+print(a&b)
+print(a-b)
+print(a^b)                                                                      # 교집합 제외 모든걸 출력
+
+a = set([1, 2, 3, 4])
+b = set([3, 4, 5, 6, 7, 8])
+a |= b                                              # 합집합
+print(a)
+a &= b                                                  # 교집합
+print(a)
+a -= b                                                  # 차집합
+print(a)
+a ^= b                                                  # 대칭 차집합
+print(a)
+
+a = set([4, 5, 6, 10, 20, 30])
+b = set([10, 20, 30])
+print(b.issubset(a))                                    # 부분집합 여부 확인
+
+a = set([4, 5, 6, 10, 20, 30])
+b = set([10, 20, 30])
+print(a.issuperset(b))                                  # 포함관계 확인
+
+a = set([4, 5, 6, 10, 20, 30])
+b = set([10, 20, 30])
+print(a.union(b))                                       # 합집합 후 출력
+
+a = set([4, 5, 6, 10, 20, 30])
+b = set([10, 20, 30])
+print(a.intersection(b))                                    # 교집합
+
+a = set([4, 5, 6, 10, 20, 30])
+b = set([10, 20, 30])
+print(a.difference(b))                                      # 차집합
+
+a = set([4, 5, 6, 10, 20, 30])
+b = set([10, 20, 30])
+print(a.symmetric_difference(b))                            # 대칭 차집합
+
+a = set([1, 2, 3, 4])
+b = set([3, 4, 5, 6])
+a.update(b)                                                 # 합집합
+print(a)
+
+a = set([1, 2, 3, 4])
+b = set([3, 4, 5, 6])
+a.intersection_update(b)                                     # 교집합
+print(a)
+
+a = set([1, 2, 3, 4])
+b = set([3, 4, 5, 6])
+a.difference_update(b)                                      # 차집합
+print(a)
+
+a = set([1, 2, 3, 4])
+b = set([3, 4, 5, 6])
+a.symmetric_difference_update(b)                                # 교집합
+print(a)
+
+a = set([1, 2, 3, 4])
+a.add(7)
+print(a)                                                        # 요소 추가
+
+a = set([1, 2, 3, 4])
+a.remove(4)                                                 # 지정 값 요소 제거
+print(a)
+
+a = set([1, 2, 3, 4])
+a.discard(4)                                                # 지정 값 요소 제거
+print(a)
+
+a = set([1, 2])
+a.pop( )                                                    # 임의 요소 제거
+print(a)
+
+a = set([4, 5, 6, 10, 20, 30])
+b = a.copy( )                                               # 세트 복사
+print(b)
+
+a = set([4, 5, 6, 10, 20, 30])
+a.clear( )                                                  # 모든 요소 제거
+print(a)
+
+a = 1;
+if a == 1:
+    print('조건이 참이므로 실행한다.')                     # 일반 IF문
+
+a = 1
+if a == 1 : print('조건이 참이므로 실행한다')              # 이래도 같음
+
+a = 1
+if a> 2:
+    print('조건이 거짓이므로 실행하지 않는다')                 # 이건 거짓 값.
+
+a = 1
+if a==1:
+    print("조건이 참이면 실행한다.")
+else:
+    print("조건이 거짓이면 실행한다.")                     # 참과 거짓 붙임.
+
+a = 1
+if a>2:
+    print("조건이 참이면 실행한다.")
+else:
+    print("조건이 거짓이면 실행한다.")  # 참과 거짓 붙임.
+
+a = 1
+b = 2
+if a==1 and b==2:                                                   # and나 or 쓸 수 있음.
+    print("조건이 참이면 실행한다.")
+else:
+    print("조건이 거짓이면 실행한다.")
+
+a = 1
+b = 2
+if a!=1 or b!=2:
+    print("조건이 참이면 실행한다.")
+else:
+    print("조건이 거짓이면 실행한다.")
+
+a = [1,2,3]
+if 1 in a:                                              # 리스트 내부의 값들로 조건을 정할 수 있음.
+    print('조건이 참이면 실행한다.')
+else:
+    print('조건이 거짓이면 실행한다')
+
+a = [1,2,3]
+if not a:                                               # 그냥 a는 멤버십이 아니므로 false
+    print('조건이 참이면 실행한다.')
+else:
+    print('조건이 거짓이면 실행한다')
+
+credit = 75
+if credit>=90:
+    print("A학점")
+elif credit>=80:                                        # else if 대신 elif하면 댐.
+    print("B학점")
+elif credit >= 70:
+    print("C학점")
+elif credit >= 60:
+    print("D학점")
+else:
+    print("F학점")
+
+order = '자장면'
+if order=='짬뽕':
+    price=6000
+elif order=='간짜장':
+    price=5000
+elif order=='자장면':
+    price=4000
+print(price)
+
+credit = 10
+if credit>=90:
+    print("A학점")
+elif credit>=80:
+    print("B학점")
+elif credit >= 70:
+    print("C학점")
+elif credit >= 60:
+    print("D학점")
+else:
+    print("F학점")
+
+x = 5
+y = 6
+z = 7
+if y>x:
+    if y<z:
+        print('y인 6은 x인 5보다 크고 y인 6은 z인 7보다 작다.')                       # 중첩 if문
+    else:
+        print('y인 6은 x인 5보다 크고 y인 6은 z인 7보다 크다.')
+else:
+    print('y인 6은 x인 5보다 작다.')
+
+# kor = int(input('국어 : '))
+# mat = int(input('수학 : '))
+# eng = int(input('영어 : '))
+#
+# score = {'국어': kor, '수학': mat, '영어': eng}
+# total = kor + mat + eng
+#
+# if total >= 180:
+#     if kor < 40 or mat < 40 or eng < 40:
+#         for vkey, value in score.items():
+#             if value < 40:
+#                 print('{}점이지만 {}과목이 {}점이므로 불합격'.format(total, vkey, value))
+#     else:
+#         print('{}점으로 합격'.format(total))
+# else:
+#     print('{}점으로 불합격'.format(total))
+#
+
+for i in [3,2,1]:                                               # 반복문의 범위는 이렇게
+    print(i, end=' ')
+
+a = ['cat', '고양이']                                              # 문자열도 가능
+for i in a:
+    print(i)
+
+a = [('one', 1), ('two', 2), ('three', 3)]                          # 튜플 사용 가능
+for i in a: print('영문은 ', i[0], '이고 정수는 ',i[1], '이다.')
+
+a = (['one', 1], ['two', 2], ['three', 3])                          # 당연 리스트도 사용 가능
+for i in a: print('영문은 ', i[0], '이고 정수는 ',i[1], '이다.')
+
+a = (['one', 1], ['two', 2], ['three', 3])                          # 언패킹해서 각각의 요소값 출력 가능
+for en, num in a:
+    print(en, num)
+
+a = {'one':1, 'two':2, 'three':3, 'four':4}                             # 딕셔너리를 넣을 수 있는데 딕셔너리로 넣으면 값이 출력이 됨,
+for i in a: print(i)
+
+a = {'one':1, 'two':2, 'three':3, 'four':4}
+for i in a: print(i, a[i])                                          # 키 값 출력은 이렇게
+
+a = {'one':1, 'two':2, 'three':3, 'four':4}
+for i in a.keys():
+    print(i, a[i])                                                  # 이렇게 a.keys써도 됨.
+
+a = {'one':1, 'two':2, 'three':3, 'four':4}
+for i in a.items( ):
+    print(i)                                       # items로 튜플변환
+
+for i in range(10):
+    print(i, end=' ')                               # for문 안에 range 내장함수가 있다.
+
+for i in range(5,10):
+    print(i, end=' ')                               # 시작 범위도 설정할 수 있음
+
+for i in range(1, 10, 2):
+    print(i, end=' ')                               # 2칸씩 띄울 수도 있다.
+
+total = 0
+for i in range(1, 11):
+    print(i, end=' ')
+    total = total + i                               # 기본적인 총합 구하기
+print()
+print(total)
+
+a = ['개','고양이','새']
+for animal in enumerate(a):                         # 인덱스 값과 같이 열거형으로 반환해주는 enumerate
+    print(animal)
+
+a = ['개', '고양이','새']
+for i, animal in enumerate(a):                      # 이런식으로 언패킹도 가능함
+    print(i, animal)
+
+a = {'1':'개', '2':'고양이', '3':'새'}               # 딕셔너리도 사용가능함. 키와는 다르게 인덱스가 새로 생김.
+for i, number in enumerate(a): print(i, number, a[number])
+
+a = ['cat', '고양이']
+for i in a: print(len(i))                           # 문자형의 길이
+
+def add(a,b):
+    return a+b
+def sub(a,b) :
+    return a-b
+a = {0:add, 1:sub}
+print('딕셔너리의 값', a[0](4,5))
+print('딕셔너리의 값', a[1](5,4))                                 # 딕셔너리 키에 숫자를 넣고 키로 값을 불러와서 함수 적는 방법
+b = {add:1, sub:2}
+print('딕셔너리의 키', b[add])
+print('딕셔너리의 키', b[sub])                                    # 키에 함수를 넣고 불러 오는 방법
+
+
+def total(n):
+    if n==1:
+        return 1
+    return n + total(n-1)                                           # 재귀적 방법 반복문이랑 비슷하게 됨.
+print('재귀 호출값 : ', total(10))
+
+def add(a,b):
+    if b not in a:
+        a.append(b)
+a = ['하나','둘']
+add(a, '셋')
+print('리스트 추가', a)
+add(a, '하나')
+print('기존 리스츠 추가 : ', a)                                    # 함수에 append를 써서 멤버 추가 가능.
+
+def mina(a,b):
+    return a+b                  # 더하는 함수
+def minb(x):
+    if x<0:
+        x = -x
+        return x                # 양수로 바꿔주는 함수
+def minc(a, b):
+    c = mina(a,b)               # 더해준 값이 c 이게 음수면 양수로 바꿔주기
+    return minb(c)
+print(minc(-5,-7))
+
+#인자값의 기본값을 설정한다.
+#성별 남자 여자 확인
+#나이
+
+# def test(age=1, gender=True, name = '홍길동'):
+#     print('이름 : {}'.format(name))
+#     print('나이 : {}'.format(age))
+#
+#     if gender:
+#         print('남자입니다.')
+#     else :
+#         print('여자입니다.')
+#
+# name = input('이름 : ')
+# age = input('나이 : ')
+# gender = input('성별 : ')
+#
+# if gender=='여자':
+#     gender = False
+# test(age,gender,name)
+
+x = 10
+y = 5
+def f(a):
+    y = a + 20                      # 로컬변수 y와 지역변수 y는 다른 공간
+    b = y + a + x
+    return b
+print(y)                            # 지역변수 값
+print(f(y))                         # f(a) 함수에 지역변수 y를 넣는다.
+
+# def f( ):
+#     a = 1
+#     b = 2
+# f.c = 3
+# print(f.c,'\n')
+# print(f.a)                        # . 안됨.
+
+# x = 10
+# def f():
+#     a = x                           # 지역변수에서 못가져옴
+#     x = 20
+#     return x
+# print(f())
+
+x = 10
+def f(a):
+    global x
+    x = a+10
+    return x
+print((x))
+print(f(20))
+print((x))                          # 이미 함수에서 x값이 변해서 나왔기 때문에 지역변수 x도 같이 값이 변한다.
+
+x = 2
+def f():
+    x = 1
+    def g():
+        print(x)
+    g()
+f()                                 # f함수를 부르면 g함수를 부르게 되고 f의 로컬변수인 x를 출력하게 된다.
+
+f = lambda x: x+2                   # 함수 대신 람다를 쓸 수 있음 그러면 x에 매개변수 값을 받고 x+2를 결과로 반환해준다.
+print(f(1))
+
+f = lambda x, y: x+y                # 매개변수가 2개도 가능함
+print(f(1,2))
+
+vargs = lambda x, *args: args       # 매개변수는 x와 가변인수인 *args다 출력은 args만 있기 때문에 x로 인식되는 1 빼고 나머지 2,3,4,5가 출력된다.
+print(vargs(1,2,3,4,5))
+
+f = lambda x, y=1 : x+y
+print('옵션 적용 : ', f(10))
+print('옵션 미적용 : ', f(10,5))     # y값이 정해져있어도 다시 적어주면 새로운 값으로 들어간다.
+
+print(list(filter(lambda x: x>2, [1,2,3,34])))      # x값이 2가 넘는 리스트에서 뽑기.
+
+print(list(filter(lambda x: x%2, [1,2,3,4,5,6])))       # 2로 나누어서 안나눠지는 것을 뽑기
+
+print(list(filter(lambda x: (x%2)-1, [1,2,3,4,5,6])))   # 2로 나누어서 안나눠진 것 중에 1뺀 값을 뽑기
+
+a = [1,2,3,4,5]
+print(list(map(lambda x: x*x,a)))                       # a값들을 x변수로 인식해서 리스트 a로 반환
+
+d = {'a':3, 'c':1, 'g':5, 't':2}
+key_call = sorted(d.items(), key=lambda x:x[0])
+print('키의 오름차순 정렬 ', key_call)
+value_call = sorted(d.items(), key=lambda x:x[1])
+print('키값의 오름차순 정렬 : ', value_call)
+
+d = {'a':3, 'c':1, 'g':5, 't':2}
+key_call = sorted(d.items(), key=lambda x:x[0], reverse=True)
+print('키의 내림차순 정렬 ', key_call)
+value_call = sorted(d.items(), key=lambda x:x[1], reverse=True)
+print('키값의 내림차순 정렬 : ', value_call)
+
+func = [lambda x,y : x+y, lambda x,y : x-y, lambda x,y : x*y, lambda x,y : x/y]
+def menu():
+    print('0.더하기 1.빼기 2.곱하기 3.나누기 4.종료')
+    return int(input('번호 선택 : '))
+
+
+# while True:
+#     num = menu()
+#     if (num<0 or num>4):
+#         print('번호를 다시 선택하세요')
+#     elif (num==0):
+#         x = int(input('첫번째 숫자 : '))
+#         y = int(input('두번째 숫자 : '))
+#         print('결과 : ', func[num](x,y))
+#         continue
+#     elif (num == 1):
+#         x = int(input('첫번째 숫자 : '))
+#         y = int(input('두번째 숫자 : '))
+#         if(y>x):
+#             x, y = y, x
+#         print('결과 : ',func[num](x,y))
+#         continue
+#     elif (num == 2):
+#         x = int(input('첫번째 숫자 : '))
+#         y = int(input('두번째 숫자 : '))
+#         print('결과 : ', func[num](x,y))
+#         continue
+#     elif (num == 3):
+#         x = int(input('첫번째 숫자 : '))
+#         y = int(input('두번째 숫자 : '))
+#         if (y==0):
+#             print('0으로 나눔 안돼')
+#         else :
+#             print('결과 : ', func[num](x,y))
+#         continue
+#     elif (num==4):
+#         break
+
+# # class Song:                                         # 클래스 생성
+# #     pass
+# # del Song                                            # 클래스 삭제
+# # print(Song)
+#
+# class Song:
+#     pass
+# a = Song()                                              # 인스턴스 주소 호출
+# print(a)
+#
+# class MinClass:
+#     pass
+# a = MinClass()
+# a.stack = []
+# a.stack.append(1)                                       # 자료구조
+# a.stack.append(2)
+# a.stack.append(3)
+# print(a.stack)
+# print(a.stack.pop())
+# print(a.stack.pop())
+# print(a.stack)
+#
+# # class MinScope:
+# #     a = 1
+# #     del a
+# # print(MinScope.a)                                       # 1이 나와야 하지만 지워서 안나옴
+#
+# # class MinScope:
+# #     a = 1
+# # MinScope.b = 2
+# # print(MinScope.b)                                       # 이런식으로 전역객체를 생성할 수 있음. 지울 수도 있음
+#
+# class MinScope:
+#  a = 2
+# c = MinScope( )
+# c.a = 1
+# print(c.a)
+# print(c.__class__.a)                                    # 이러면 c.a가 아닌 클래스 안에 있는 a가 호출됨.
+# print(MinScope.a)
+#
+# class MemberClass :
+#     name = '홍길동'
+#     def call(self) :
+#         pass
+# print(MemberClass.name)                                 # 그냥 이름 부르기
+#
+# class MemberClass2:
+#     name = '홍길동'
+#     def call(self):
+#         print(self.name)
+# c = MemberClass2()
+# c.call()                                                # 이렇게도 부를 수 있음 클래스 안에 함수 생성 후 print적으면 됨.
+#
+# class MemberClass3:
+#     name = '홍길동'
+#     def call(self):
+#         self.name = '전우치'
+#         print(self.name)
+# c1 = MemberClass3()
+# c1.call()                                               # 클래스 내 함수에 있는 이름을 호출
+# c2 = MemberClass3()
+# print(c2.name)                                          # 그냥 클래스에 있는 이름을 호출
+
+class MemberClass4:
+    def call(self):
+        self.name = '홍길동'
+        print(self.name)
+c = MemberClass4()
+c.call()                                                    # c에 있는 call 함수 불러오기
+
+class MemberClass5:
+    def call(self):
+        self.name = '홍길동'
+        print(self.name)
+c = MemberClass5()
+c.call()                                                        # 함수를 불러와야지만 불러오기가 가능함.
+print(c.name)                                                   # 이런식으로 name에 바로 접근해서 부를 수도 있음
+
+# class MemberClass6:
+#     def call(self):
+#         self.name = '홍길동'
+#         print(self.name)
+# c1 = MemberClass6()
+# print(c1.name)                                                  # 함수를 불러오지 않아서 오류가 난다.
+
+class MethodClass:
+    def set(self, name):
+        self.name = name
+    def get(self):
+        return self.name
+c = MethodClass()
+c.set('홍길동')                                                # 파이썬에서의 set,get함수
+print(c.get())
+
+class MethodClass2:
+    def set(self, name):
+        self.name = name
+    def get(self):
+        return self.name
+c = MethodClass2()                                              # 클래스로 접근을 하면 self인자에도 클래스를 적어줘야함.
+MethodClass2.set(c, '홍길동')
+print(MethodClass2.get(c))
+
+class MethodClass3:
+    def set(self, name):
+        self.name = name                                        # public 환경
+    def get(self):
+        return self.name
+c = MethodClass3()
+c.set('홍길동')
+print(c.name)
+
+class MethodClass4:
+    def set(self, name):
+        self._name = name                                       # private 환경
+    def get(self):
+        return self._name
+c = MethodClass4()
+c.set('홍길동')
+print(c._name)
+
+class MethodClass5:
+    def set(self, name):
+        self.name = name
+    def add(self):
+        self.set(self.name + '전우치')
+    def get(self):
+        return self.name
+c = MethodClass5()
+c.set('홍길동')
+c.add()
+print(c.get())
+
+class MethodClass5:
+    def set(self, name):
+        self.name = name
+    def add(self):
+        set(self.name + '전우치')                              # 바로 위 코드와 달리 add함수에 self안적으면 접근을 못함..
+    def get(self):
+        return self.name
+c = MethodClass5()
+c.set('홍길동')
+c.add()
+print(c.get())
+
+class ArgumentClass:
+    def __new__(self, *args):
+        if len(args)<1:
+            return None
+        else:
+            return super(ArgumentClass, self).__new__(self)
+call = ArgumentClass(10)
+print(call)
+
+def call_check(no_call):
+    if callable(no_call):
+        print('호출 가능')
+    else :
+        print('호출 불가')
+class Acall:
+    def __call__(self, obj):
+        return obj
+class Bcall:
+    def no_call(self, obj):
+        return obj
+acall = Acall()
+bcall = Bcall()
+call_check(acall)
+call_check(bcall)
+
+class ArgumentClass:
+    def __init__(self, obj):
+        self.obj = obj
+call = ArgumentClass(10)
+print(call)
+
+class AccessClass:
+    def __init__(self):
+        self.public = '홍길동'
+        self._private = '전우치'
+    def _privatecall(self):
+        print(self.public)
+        print(self._private)
+call = AccessClass()
+call._privatecall()
+print(call.public)
+print(call._private)
+
+class ArgumentClass:
+    def ˍˍinitˍˍ(self, obj):
+        self.obj = obj
+        def ˍˍdelˍˍ(self) :                                     # 객체 소멸시키기
+            print('객체 소멸')
+call = ArgumentClass(10)
+print(call)
+
+class ArgumentClass:
+    def ˍˍinitˍˍ(self, obj):
+        self.obj=obj
+        def ˍˍstrˍˍ(self):
+            return str(self.obj)
+call = ArgumentClass(10)
+print(call)
+
+class ArgumentClass:
+    def ˍˍinitˍˍ(self, obj):
+        self.obj = obj
+        def ˍˍreprˍˍ(self) :
+            return repr(self.obj)
+call = ArgumentClass(10)
+print(call)
+
+from time import ctime, sleep
+class LifeClass:
+    def ˍˍinitˍˍ(self):
+        print('초기화 시간: ', ctime( ))
+        def ˍˍdelˍˍ(self) :
+            print('소멸 시간: ', ctime( ))
+call = LifeClass( )
+sleep(5)
+print('5초가 지났습니다.')
+
+
+
+
+
