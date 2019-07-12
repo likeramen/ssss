@@ -1,0 +1,48 @@
+import logging
+from keras.datasets import mnist
+from keras.models import Sequential
+from keras.layers.core import Activation, Dense, Dropout
+from keras.optimizers import SGD, Adagrad, Nadam, Adam
+from keras.utils import np_utils
+
+logging.disable(logging.WARNING)
+
+
+(X_train, Y_train), (X_test, Y_test) = mnist.load_data()
+X_train = X_train.reshape(60000, 784).astype('float32')
+X_test = X_test.reshape(10000, 784).astype('float32')
+
+
+X_train = X_train/255
+X_test = X_test
+
+Y_train = np_utils.to_categorical(Y_train, 10)
+Y_test = np_utils.to_categorical(Y_test, 10)
+
+# 모델 구성하기
+# Dense가 레이어 생성이며, Dense하나당 Dropout이랑 Activation을 적어줘야함.
+# Dense는 총 3개 생성 되었으며, Dense는 하나당 한개의 층이라고 생각하면 됨. 첫번째 층에서는 relu를 사용했고 2번째는 sigmoid사용 이런식으로 했다. 이걸 잘 맞춰줘야지 결과가 잘 나옴.
+# relu와 sigmoid 손실 :  [1.2821639016787212]  정확도 :  [0.6160333333333333]
+
+model = Sequential()
+model.add(Dense(512,input_shape=(784,)))
+model.add(Activation('relu'))
+model.add(Dropout(0.2))
+model.add(Dense(512))
+model.add(Activation('relu'))
+model.add(Dropout(0.2))
+model.add(Dense(10))                        # 마지막 Dense는 출력 전용. 그래서 학습이나 출력량을 맞춰줘야함.
+model.add(Activation('softmax'))
+
+#SGD, Adagrad, Nadam, Adam
+model.compile(
+    loss='categorical_crossentropy',
+    optimizer='sgd',
+    metrics=['accuracy']
+)
+
+#모델 학습
+hist = model.fit(X_train, Y_train)
+#학습 내역 확인
+print("손실 : ", hist.history['loss'])
+print("정확도 : ", hist.history['acc'])
